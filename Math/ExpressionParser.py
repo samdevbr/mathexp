@@ -1,4 +1,4 @@
-from Math.ExpressionValidador import ExpressionValidador
+from Math.ExpressionValidator import ExpressionValidator
 
 class ExpressionParser:
     expression = None
@@ -6,5 +6,5 @@ class ExpressionParser:
         self.expression = expression
 
     def evaluate(self):
-        ExpressionValidador.validate(self.expression)
-            
+        ExpressionValidator.validate(self.expression)
+

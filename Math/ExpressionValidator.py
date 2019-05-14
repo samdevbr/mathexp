@@ -1,6 +1,6 @@
 import re
 
-class ExpressionValidador:
+class ExpressionValidator:
     @staticmethod
     def has_operators(expression):
         return re.findall(r"(\+|\-|\/|\*)", expression, re.I | re.M).__len__() > 0
@@ -25,11 +25,11 @@ class ExpressionValidador:
 
     @staticmethod
     def validate(expression):
-        if not ExpressionValidador.has_operators(expression):
+        if not ExpressionValidator.has_operators(expression):
             raise Exception('Given expression does not contain any valid operators. Which is (+, -, *, /)')
-        elif not ExpressionValidador.has_numbers(expression):
+        elif not ExpressionValidator.has_numbers(expression):
             raise Exception('Given expression does not contain any number.')
-        elif ExpressionValidador.has_alphanumeric_chars(expression):
+        elif ExpressionValidator.has_alphanumeric_chars(expression):
             raise Exception('Given expression contains undefined variables.')
-        elif not ExpressionValidador.is_expression(expression):
+        elif not ExpressionValidator.is_expression(expression):
             raise Exception('Given string isn\'t an valid math expression.')
