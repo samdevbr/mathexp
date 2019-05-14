@@ -3,7 +3,7 @@ import re
 class ExpressionValidator:
     @staticmethod
     def has_operators(expression):
-        return re.findall(r"(\+|\-|\/|\*)", expression, re.I | re.M).__len__() > 0
+        return re.findall(r"(\+|\-|\/|\*|\%)", expression, re.I | re.M).__len__() > 0
 
     @staticmethod
     def has_numbers(expression):
@@ -11,7 +11,7 @@ class ExpressionValidator:
 
     @staticmethod
     def has_alphanumeric_chars(expression):
-        return re.findall(r"([a-z])", expression, re.I | re.M).__len__() > 0
+        return re.findall(r"[a-z]", expression, re.I | re.M).__len__() > 0
 
     @staticmethod
     def is_expression(expression):
@@ -19,7 +19,7 @@ class ExpressionValidator:
             return False
 
         number_quantity = len(re.findall(r"(\d+)", expression, re.I | re.M))
-        operator_quantity = len(re.findall(r"(\-|\+|\*|\/+)", expression, re.I | re.M))
+        operator_quantity = len(re.findall(r"(\-|\+|\*{1,2}|\/+|\%)", expression, re.I | re.M))
 
         return (number_quantity - 1) == operator_quantity
 
